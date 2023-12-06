@@ -1,4 +1,11 @@
-import { Link, Route, Switch, useLocation, useParams, useRouteMatch } from "react-router-dom";
+import { 
+  Link, 
+  Route, 
+  Switch,
+  useLocation,
+  useParams,
+  useRouteMatch,
+  useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Price from "./Price";
 import Chart from "./Chart";
@@ -15,13 +22,21 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 48px;
   color: ${props => props.theme.accentColor};
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 `;
 
 const Header = styled.header`
   height: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  position: relative;
 `;
 
 const Loader = styled.span`
@@ -70,6 +85,12 @@ const Tab = styled.span<{isActive: boolean}>`
   a {
     display: block;
   };
+`;
+
+const Back = styled.label`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 `;
 
 
@@ -138,6 +159,7 @@ export interface IPrice {
 }
 
 function Coin() {
+  const history = useHistory();
   const { coinId }= useParams<Params>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -160,6 +182,11 @@ function Coin() {
           loading ? "Loading..." : info?.name}</title>
       </Helmet>
       <Header>
+        <Back onClick={() => {history.goBack()}}>
+          <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path clipRule="evenodd" fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+          </svg>
+        </Back>
         <Title>{state?.name ? state.name : 
           loading ? "Loading..." : info?.name}</Title>
       </Header>
