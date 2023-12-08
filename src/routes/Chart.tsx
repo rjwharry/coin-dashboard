@@ -17,7 +17,7 @@ export interface IHistoricalError {
   "error":string
 }
 
-interface IChart {
+export interface IChart {
   coinId: string;
 }
 
