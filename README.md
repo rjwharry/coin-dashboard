@@ -22,4 +22,6 @@ npm start
 ## Home
 ![Home](./img/home.png)
 ## Detail with Chart
-![Detail](./img/detail.png)
+| Line Chart | CandleStick Chart
+|-|-|
+|![Line](./img/line.png)|![Candle](./img/candle.png)

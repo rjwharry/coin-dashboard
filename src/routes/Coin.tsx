@@ -22,7 +22,6 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 48px;
   color: ${props => props.theme.accentColor};
-  margin: 0 auto;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -182,7 +181,7 @@ function Coin() {
           loading ? "Loading..." : info?.name}</title>
       </Helmet>
       <Header>
-        <Back onClick={() => {history.goBack()}}>
+        <Back onClick={() => {history.push("/")}}>
           <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path clipRule="evenodd" fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
           </svg>
@@ -219,18 +218,18 @@ function Coin() {
           </Overview>
           <Tabs>
             <Tab isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>Chart</Link>
+              <Link to={`/${coinId}/line`}>Line</Link>
             </Tab>
             <Tab isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>Price</Link>
+              <Link to={`/${coinId}/candle`}>Candle</Link>
             </Tab>
           </Tabs>
 
           <Switch>
-            <Route path={`/:coinId/price`}>
-              <Price />
+            <Route path={`/:coinId/candle`}>
+              <Price coinId={coinId}/>
             </Route>
-            <Route path={`/:coinId/chart`}>
+            <Route path={`/:coinId/line`}>
               <Chart coinId={coinId} />
             </Route>
           </Switch>
