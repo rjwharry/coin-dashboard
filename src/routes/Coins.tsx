@@ -18,25 +18,61 @@ const Header = styled.header`
   align-items: center;
 `;
 
-const CoinsList = styled.ul``;
+const CoinsList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  `;
 
-const Coin = styled.li`
+const Tooltip = styled.span`
+  position: absolute;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  color: ${props => props.theme.bgColor};
+  z-index: 1;
+  border-style: solid;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 10;
+  border-radius: 15px;
+`;
+
+const Coin = styled.div`
   background-color: white;
   color: ${props => props.theme.bgColor};
   margin-bottom: 10px;
   border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   a {
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding:20px;
+    padding:15px;
     transition: color 0.2s ease-in;
+    img {
+      margin: auto;
+      width: 50px;
+      height: 50px;
+    }
   }
   &:hover {
     a {
       color: ${props => props.theme.accentColor};
     }
+    ${Tooltip} {
+      visibility: visible;
+    }
   }
 `;
+
 
 const Title = styled.h1`
   font-size: 48px;
@@ -89,7 +125,7 @@ function Coins() {
                 state: {name: coin.name},
               }}>
                 <Img src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}/>
-                {coin.name} &rarr;
+                <Tooltip>{coin.name}</Tooltip>
               </Link>
             </Coin>)}
         </CoinsList>
