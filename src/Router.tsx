@@ -1,6 +1,6 @@
-import {Route, Switch } from "react-router-dom"
-import Coins from "./routes/Coins"
-import Coin from "./routes/Coin"
+import { Route, Switch } from 'react-router-dom';
+import Coins from './routes/Coins';
+import Coin from './routes/Coin';
 
 function Router() {
   return (
@@ -14,7 +14,7 @@ function Router() {
         </Route>
       </Switch>
     </>
-  )
+  );
 }
 
 export default Router;
