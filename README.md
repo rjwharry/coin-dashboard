@@ -15,6 +15,7 @@
 - [React-Query](https://tanstack.com/query/v3/)
 - [APEXCHARTS](https://apexcharts.com/)
 - [React-Helmet](https://github.com/nfl/react-helmet#readme)
+- [Recoil](https://recoiljs.org/ko/)
 
 # QuickStart
 
