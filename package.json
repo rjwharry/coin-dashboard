@@ -52,6 +52,7 @@
     "@types/react-helmet": "^6.1.9",
     "@types/react-router-dom": "^5.3.3",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-hooks": "^0.4.3",
     "eslint-plugin-prettier": "^5.0.1"
   }
 }
